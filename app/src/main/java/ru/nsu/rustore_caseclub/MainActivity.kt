@@ -21,7 +21,6 @@ import androidx.navigation.compose.rememberNavController
 import ru.nsu.rustore_caseclub.ui.theme.Rustore_caseclubTheme
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

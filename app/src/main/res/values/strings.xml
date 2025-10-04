@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">rustore_caseclub</string>
+    <string name="description">Описание</string>
+    <string name="restrict">Возраст</string>
 </resources>
