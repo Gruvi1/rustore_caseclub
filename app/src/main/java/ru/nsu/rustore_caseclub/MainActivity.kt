@@ -11,21 +11,34 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import ru.nsu.rustore_caseclub.model.AppInfo
+import ru.nsu.rustore_caseclub.ui.screens.AppDisplay
 import ru.nsu.rustore_caseclub.ui.theme.Rustore_caseclubTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val vkApp = AppInfo (
+            id = 1,
+            name = "VK",
+            category = "Социальные сети",
+            description = "VK — это социальная сеть для общения, обмена медиа и доступа к музыке, видео и сообществам.",
+            iconContent = "file:///android_asset/vk_icon.png",
+            screenshots = listOf(
+                "file:///android_asset/vk_screenshot1.png",
+                "file:///android_asset/vk_screenshot2.png",
+                "file:///android_asset/vk_screenshot3.png"
+            ),
+            developerCompany = "VK Devs",
+            ageRating = "12+"
+        )
+
+
+
         setContent {
-            Rustore_caseclubTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            AppDisplay(vkApp)
         }
     }
 }
