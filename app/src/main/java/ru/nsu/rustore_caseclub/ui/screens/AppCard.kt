@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -134,16 +135,13 @@ fun FullDescription(description: String) {
 }
 
 @Composable
-fun AppCard(
-    navController: NavController?,
-    appInfo: AppInfo
-) {
+fun AppCard(appInfo: AppInfo) {
     Scaffold(
         modifier = Modifier
             .padding(top = 24.dp),
-        topBar = {
-            Button(onClick = {  }) {
-                Text("Go back")
+        floatingActionButton = {
+            FloatingActionButton(onClick = {}) {
+                Text("Back")
             }
         }
     ) { innerPadding ->
@@ -182,5 +180,5 @@ fun AppCardPreview() {
         ageRating = "12+"
     )
 
-    AppCard(navController = null, appInfo = vkAppInfo)
+    AppCard(appInfo = vkAppInfo)
 }
