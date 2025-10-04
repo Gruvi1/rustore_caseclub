@@ -1,6 +1,7 @@
 package ru.nsu.rustore_caseclub.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -50,14 +51,14 @@ fun ShowCaseTopBar() {
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppShowCaseCard(appInfo: AppInfo) {
+fun AppShowCaseCard(appInfo: AppInfo, onAppClick: (String) -> Unit) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(90.dp),
-        onClick = {
-
-        }
+            .height(90.dp)
+            .clickable {
+                onAppClick(appInfo.id.toString())
+            }
     ) {
         Row(
             modifier = Modifier
@@ -98,7 +99,7 @@ fun AppShowCaseCard(appInfo: AppInfo) {
 }
 
 @Composable
-fun AppShowCase(navController: NavController?, appInfos: List<AppInfo>) {
+fun AppShowCase(appInfos: List<AppInfo>, onAppClick: (String) -> Unit) {
     Scaffold(
         modifier = Modifier
             .padding(top = 24.dp),
@@ -114,7 +115,7 @@ fun AppShowCase(navController: NavController?, appInfos: List<AppInfo>) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(appInfos) { info ->
-                AppShowCaseCard(info)
+                AppShowCaseCard(info, onAppClick)
             }
         }
     }
@@ -139,5 +140,7 @@ fun AppShowCasePreview() {
 
     val appInfos = List(15) { vkAppInfo }
 
-    AppShowCase(navController = null, appInfos = appInfos)
+    AppShowCase(appInfos = appInfos) {
+        println("Заглушка")
+    }
 }

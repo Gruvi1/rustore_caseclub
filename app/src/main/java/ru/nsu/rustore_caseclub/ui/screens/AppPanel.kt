@@ -14,7 +14,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import ru.nsu.rustore_caseclub.model.AppInfo
-import ru.nsu.rustore_caseclub.ui.getImage
 
 @Composable
 fun AppDisplay(appInfo: AppInfo) {
@@ -23,7 +22,13 @@ fun AppDisplay(appInfo: AppInfo) {
         modifier = Modifier.padding(16.dp)
     )
     {
-        getImage(url = appInfo.icon, modifier = Modifier.size(200.dp))
+        AsyncImage(model = ImageRequest.Builder(LocalContext.current)
+            .data(appInfo.icon)
+            .crossfade(true)
+            .build(),
+            contentDescription = "",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.size(200.dp))
         Text(text = appInfo.name, modifier = Modifier.padding(vertical = 4.dp))
         Text(text = getShortDescr(appInfo.description), modifier = Modifier.padding(vertical = 4.dp))
         Text(text = appInfo.category, modifier = Modifier.padding(vertical = 4.dp))

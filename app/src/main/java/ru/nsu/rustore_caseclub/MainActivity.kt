@@ -5,16 +5,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.Text
-import ru.nsu.rustore_caseclub.ui.AppCard
+import ru.nsu.rustore_caseclub.ui.screens.MainScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val rep = BadRepository(this)
         enableEdgeToEdge()
+        val bd = BadRepository(this)
         setContent {
-            AppCard(navController = null, appInfo = rep.readAppsFromRaw()[3])
+            MainScreen(bd.readAppsFromRaw())
         }
     }
 }
