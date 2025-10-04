@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.nsu.rustore_caseclub.R
@@ -31,7 +32,7 @@ fun DisplayOnboarding() {
         Image(
             painter = painterResource(id = R.drawable.rustore_logo),
             contentDescription = "Логотип RuStore",
-            modifier = Modifier.size(128.dp) // размер картинки
+            modifier = Modifier.size(128.dp)
         )
 
         Spacer(modifier = Modifier.height(16.dp)) // отступ между картинкой и текстом

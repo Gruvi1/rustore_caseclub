@@ -15,17 +15,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import ru.nsu.rustore_caseclub.R
+import ru.nsu.rustore_caseclub.model.AppInfo
 import ru.nsu.rustore_caseclub.model.Model
 
 @Composable
-fun CardHeader(modifier: Modifier = Modifier) {
+fun CardHeader(name: String, developer: String) {
     Row(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -39,32 +41,27 @@ fun CardHeader(modifier: Modifier = Modifier) {
         Column(
             modifier = Modifier.weight(1f)
         ) {
-            Text("Название")
-            Text("Разработчик")
+            Text(name)
+            Text(developer)
         }
     }
 }
 
 @Composable
-fun MetaData(modifier: Modifier = Modifier) {
+fun MetaData(category: String, restrict: String) {
     Row (
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Text("Категория приложения")
-        Text("Возраст: 0+")
+        Text(category)
+        Text("Возраст: $restrict")
     }
 }
 
 @Composable
-fun ScreenShots() {
-    val imageList = listOf(
-        R.drawable.screen1,
-        R.drawable.screen2
-    )
-
+fun ScreenShots(imageList: List<Int>) {
     LazyRow {
         items(imageList.size) { index ->
             Image(
@@ -80,19 +77,24 @@ fun ScreenShots() {
 }
 
 @Composable
-fun FullDescription() {
-    Column {
-
+fun FullDescription(description: String) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Text(text = "Описание", fontWeight = FontWeight.Bold)
+        Text(description)
     }
 }
 
 @Composable
 fun AppCard(
-    modifier: Modifier = Modifier,
-    model: Model?,
-    navController: NavController?,
-    appId: Int
+    appInfo: AppInfo
 ) {
+    val imageList = listOf(
+        R.drawable.screen1,
+        R.drawable.screen2
+    )
+
     Scaffold(
         topBar = {
             Button(onClick = {  }) {
@@ -106,11 +108,12 @@ fun AppCard(
                 .padding(innerPadding)
                 .padding(horizontal = 16.dp)
         ) {
-            CardHeader()
+            CardHeader(name = appInfo.name, developer = appInfo.developerCompany)
             Spacer(modifier = Modifier.height(8.dp))
-            MetaData()
-            ScreenShots()
-            FullDescription()
+            MetaData(category = appInfo.developerCompany, restrict = appInfo.ageRating)
+            ScreenShots(imageList)
+            Spacer(modifier = Modifier.height(8.dp))
+            FullDescription(description = appInfo.description)
         }
     }
 }
@@ -118,5 +121,20 @@ fun AppCard(
 @Preview
 @Composable
 fun AppCardPreview() {
-    AppCard(modifier = Modifier.padding(20.dp), model = null, navController = null, appId = 10)
+    val vkAppInfo = AppInfo(
+        id = 1,
+        name = "VK",
+        category = "Социальные сети",
+        description = "VK — это социальная сеть для общения, обмена медиа и доступа к музыке, видео и сообществам.",
+        iconContent = "file:///android_asset/vk_icon.png",
+        screenshots = listOf(
+            "file:///android_asset/vk_screenshot1.png",
+            "file:///android_asset/vk_screenshot2.png",
+            "file:///android_asset/vk_screenshot3.png"
+        ),
+        developerCompany = "VK Company",
+        ageRating = "12+"
+    )
+
+    AppCard(appInfo = vkAppInfo)
 }
