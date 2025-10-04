@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -14,15 +13,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.AppInfo
-import ru.nsu.rustore_caseclub.model.Model
 
 @Composable
 fun CardHeader(name: String, developer: String) {
@@ -56,7 +58,7 @@ fun MetaData(category: String, restrict: String) {
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(category)
-        Text("Возраст: $restrict")
+        Text("${stringResource(R.string.restrict)}: $restrict")
     }
 }
 
@@ -81,13 +83,14 @@ fun FullDescription(description: String) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(text = "Описание", fontWeight = FontWeight.Bold)
+        Text(text = stringResource(R.string.description), fontWeight = FontWeight.Bold)
         Text(description)
     }
 }
 
 @Composable
 fun AppCard(
+    navController: NavController?,
     appInfo: AppInfo
 ) {
     val imageList = listOf(
@@ -111,7 +114,7 @@ fun AppCard(
             CardHeader(name = appInfo.name, developer = appInfo.developerCompany)
             Spacer(modifier = Modifier.height(8.dp))
             MetaData(category = appInfo.category, restrict = appInfo.ageRating)
-            ScreenShots(imageList)
+            ScreenShots(imageList = imageList)
             Spacer(modifier = Modifier.height(8.dp))
             FullDescription(description = appInfo.description)
         }
@@ -136,5 +139,5 @@ fun AppCardPreview() {
         ageRating = "12+"
     )
 
-    AppCard(appInfo = vkAppInfo)
+    AppCard(navController = null, appInfo = vkAppInfo)
 }
