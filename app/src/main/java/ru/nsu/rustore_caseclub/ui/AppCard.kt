@@ -1,8 +1,11 @@
 package ru.nsu.rustore_caseclub.ui
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -10,10 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.Model
 
 @Composable
@@ -54,7 +60,30 @@ fun MetaData(modifier: Modifier = Modifier) {
 
 @Composable
 fun ScreenShots() {
+    val imageList = listOf(
+        R.drawable.screen1,
+        R.drawable.screen2
+    )
 
+    LazyRow {
+        items(imageList.size) { index ->
+            Image(
+                painter = painterResource(id = imageList[index]),
+                contentDescription = "Photo ${index + 1}",
+                modifier = Modifier
+                    .size(120.dp)
+                    .padding(4.dp),
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
+
+@Composable
+fun FullDescription() {
+    Column {
+
+    }
 }
 
 @Composable
@@ -81,6 +110,7 @@ fun AppCard(
             Spacer(modifier = Modifier.height(8.dp))
             MetaData()
             ScreenShots()
+            FullDescription()
         }
     }
 }
