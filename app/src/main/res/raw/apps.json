@@ -4,7 +4,7 @@
     "name": "SuperGame",
     "category": "Action",
     "description": "An epic adventure game with stunning graphics.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.wGtrj-x6MXHcX-8KHFhhZwAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=e6c028ab4a4622095e1c1db2b6f3816ffe79882edad389a22b80a5e07ecd1417",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.wGtrj-x6MXHcX-8KHFhhZwAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=e6c028ab4a4622095e1c1db2b6f3816ffe79882edad389a22b80a5e07ecd1417",
     "screenshots": "greygh",
     "developerCompany": "DevStudio China",
     "ageRating": "16+"
@@ -14,7 +14,7 @@
     "name": "PuzzleMaster",
     "category": "Puzzle",
     "description": "Challenging puzzles for all ages.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Faux.iconspalace.com%2Fuploads%2Fbriefcase-icon-64-1506675555.png&f=1&nofb=1&ipt=bc9255ca5526b1ebaa3808433dff4450c71938c99939d967e5d48ba1fd973f3a",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Faux.iconspalace.com%2Fuploads%2Fbriefcase-icon-64-1506675555.png&f=1&nofb=1&ipt=bc9255ca5526b1ebaa3808433dff4450c71938c99939d967e5d48ba1fd973f3a",
     "screenshots": "null",
     "developerCompany": "BrainBoost Games",
     "ageRating": "12+"
@@ -24,7 +24,7 @@
     "name": "RacingThunder",
     "category": "Racing",
     "description": "High-speed racing with realistic physics.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fstorage%2Fimg%2Fthumb%2FGame-icon.png&f=1&nofb=1&ipt=9a9d095de6c59c10ad4352a393cdba1a7714c214b347c1bd43645f1e403282fb",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fstorage%2Fimg%2Fthumb%2FGame-icon.png&f=1&nofb=1&ipt=9a9d095de6c59c10ad4352a393cdba1a7714c214b347c1bd43645f1e403282fb",
     "screenshots": "null",
     "developerCompany": "SpeedDev Inc.",
     "ageRating": "16+"
@@ -34,7 +34,7 @@
     "name": "FantasyWorld",
     "category": "RPG",
     "description": "Explore magical lands and epic quests.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fbook-icon-vector-id1254373900%3Fb%3D1%26k%3D20%26m%3D1254373900%26s%3D170x170%26h%3D-w0ZsACgM0kdJoZuRhTu9y7f5rPpzimQeecyZP4OiE0%3D&f=1&nofb=1&ipt=749eac0e57c35be8577389d0850a1ef75ae48a110201ac33b181fd6589545cd5",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fvectors%2Fbook-icon-vector-id1254373900%3Fb%3D1%26k%3D20%26m%3D1254373900%26s%3D170x170%26h%3D-w0ZsACgM0kdJoZuRhTu9y7f5rPpzimQeecyZP4OiE0%3D&f=1&nofb=1&ipt=749eac0e57c35be8577389d0850a1ef75ae48a110201ac33b181fd6589545cd5",
     "screenshots": "null",
     "developerCompany": "Mythic Studios",
     "ageRating": "18+"
@@ -44,7 +44,7 @@
     "name": "CookingSim",
     "category": "Simulation",
     "description": "Become a master chef in this cooking game.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.Q19GY9vv3P0wpUHmAOiJ6gAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=88c0584906af6ea789ce1f86271033ad1091c11250e2cffc913b73054f43893a",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.Q19GY9vv3P0wpUHmAOiJ6gAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=88c0584906af6ea789ce1f86271033ad1091c11250e2cffc913b73054f43893a",
     "screenshots": "null",
     "developerCompany": "FoodFun Games",
     "ageRating": "All"
@@ -54,7 +54,7 @@
     "name": "ZombieSurvival",
     "category": "Shooter",
     "description": "Survive hordes of zombies in this action game.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fstorage%2Fimg%2Fthumb%2FFlower-Icon.png&f=1&nofb=1&ipt=eeac0a306467b9ac1dd59c1400d29b69b90f171d8e037df7d91173961887ddad",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffreesvg.org%2Fstorage%2Fimg%2Fthumb%2FFlower-Icon.png&f=1&nofb=1&ipt=eeac0a306467b9ac1dd59c1400d29b69b90f171d8e037df7d91173961887ddad",
     "screenshots": "null",
     "developerCompany": "Apocalypse Games",
     "ageRating": "18+"
@@ -64,7 +64,7 @@
     "name": "SpaceExplorers",
     "category": "Adventure",
     "description": "Journey through space and discover new worlds.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.jacaranda.com.au%2Fwp-content%2Fuploads%2F2017%2F05%2Fmaths_icon.png&f=1&nofb=1&ipt=6b2b97035ee3bf02d9e6b518fc343d720eef80f792125f804f012106010f6c2d",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.jacaranda.com.au%2Fwp-content%2Fuploads%2F2017%2F05%2Fmaths_icon.png&f=1&nofb=1&ipt=6b2b97035ee3bf02d9e6b518fc343d720eef80f792125f804f012106010f6c2d",
     "screenshots": "null",
     "developerCompany": "Galaxy Studios",
     "ageRating": "12+"
@@ -74,7 +74,7 @@
     "name": "FishingKing",
     "category": "Sports",
     "description": "Realistic fishing simulator with various locations.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.0hI-4X1afaW4HPTEh119ewAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=d53521de4b62e4f46c4f83972ccb9f89ad7fb77f0ce4b95861ea1cc720923722",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.0hI-4X1afaW4HPTEh119ewAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=d53521de4b62e4f46c4f83972ccb9f89ad7fb77f0ce4b95861ea1cc720923722",
     "screenshots": "null",
     "developerCompany": "Nature Games",
     "ageRating": "All"
@@ -84,7 +84,7 @@
     "name": "CityBuilderPro",
     "category": "Strategy",
     "description": "Build and manage your own city.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fparapa.ru%2Fwiki%2Fimages%2Fthumb%2F4%2F45%2FLetter-Open-icon.png%2F40px-Letter-Open-icon.png&f=1&nofb=1&ipt=603edef04e48ef8a20ba5f7b3fe2aa250c48e9f6962bee01ac1d8001e19c91fe",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fparapa.ru%2Fwiki%2Fimages%2Fthumb%2F4%2F45%2FLetter-Open-icon.png%2F40px-Letter-Open-icon.png&f=1&nofb=1&ipt=603edef04e48ef8a20ba5f7b3fe2aa250c48e9f6962bee01ac1d8001e19c91fe",
     "screenshots": "null",
     "developerCompany": "Urban Dev",
     "ageRating": "All"
@@ -94,7 +94,7 @@
     "name": "DinoHunt",
     "category": "Action",
     "description": "Hunt prehistoric creatures in this thrilling game.",
-    "iconContent": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.sllfyAHLSvaR1AGzMigGggAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=bec1bdde1aa12ab7fa0f10caa252dbafc283d05b2453aa5619f46eab521bca45",
+    "icon": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.sllfyAHLSvaR1AGzMigGggAAAA%3Fcb%3D12%26pid%3DApi&f=1&ipt=bec1bdde1aa12ab7fa0f10caa252dbafc283d05b2453aa5619f46eab521bca45",
     "screenshots": "null",
     "developerCompany": "Prehistoric Games",
     "ageRating": "16+"

@@ -17,6 +17,7 @@ class BadRepository(private val context: Context) {
             val jsonString = readRawResourceAsString(R.raw.apps)
             json.decodeFromString<List<AppInfo>>(jsonString)
         } catch (e: Exception) {
+            println("Err")
             emptyList()
         }
     }
@@ -26,6 +27,7 @@ class BadRepository(private val context: Context) {
             val jsonString = readRawResourceAsString(resId)
             json.decodeFromString<T>(jsonString)
         } catch (e: Exception) {
+            println("Err")
             null
         }
     }
