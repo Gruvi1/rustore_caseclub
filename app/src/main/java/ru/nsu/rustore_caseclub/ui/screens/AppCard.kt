@@ -1,27 +1,32 @@
 package ru.nsu.rustore_caseclub.ui
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.AppInfo
@@ -63,17 +68,58 @@ fun MetaData(category: String, restrict: String) {
 }
 
 @Composable
-fun ScreenShots(imageList: List<Int>) {
-    LazyRow {
+fun ScreenShots(imageList: List<String>) {
+    val imageUrl = remember { mutableStateOf("") }
+    val showFullScreen = remember { mutableStateOf(false) }
+
+    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         items(imageList.size) { index ->
-            Image(
-                painter = painterResource(id = imageList[index]),
-                contentDescription = "Photo ${index + 1}",
+            Card(modifier = Modifier
+                .clickable {
+                    imageUrl.value = imageList[index]
+                    showFullScreen.value = true
+                           },
+                elevation = CardDefaults.cardElevation(4.dp)
+            ) {
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(imageList[index])
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .padding(4.dp)
+                )
+            }
+        }
+    }
+
+    if (showFullScreen.value) {
+        Dialog(
+            onDismissRequest = { showFullScreen.value = false },
+            properties = DialogProperties(usePlatformDefaultWidth = false)
+        ) {
+            Box(
                 modifier = Modifier
-                    .size(120.dp)
-                    .padding(4.dp),
-                contentScale = ContentScale.Crop
-            )
+                    .fillMaxSize()
+                    .background(Color.Black)
+                    .clickable { showFullScreen.value = false },
+                contentAlignment = Alignment.Center
+            ) {
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(imageUrl)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = "",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                )
+            }
         }
     }
 }
@@ -89,19 +135,13 @@ fun FullDescription(description: String) {
 }
 
 @Composable
-fun AppCard(
-    navController: NavController?,
-    appInfo: AppInfo
-) {
-    val imageList = listOf(
-        R.drawable.screen1,
-        R.drawable.screen2
-    )
-
+fun AppCard(appInfo: AppInfo) {
     Scaffold(
-        topBar = {
-            Button(onClick = {  }) {
-                Text("Go back")
+        modifier = Modifier
+            .padding(top = 24.dp),
+        floatingActionButton = {
+            FloatingActionButton(onClick = {}) {
+                Text("Back")
             }
         }
     ) { innerPadding ->
@@ -114,7 +154,7 @@ fun AppCard(
             CardHeader(name = appInfo.name, developer = appInfo.developerCompany)
             Spacer(modifier = Modifier.height(8.dp))
             MetaData(category = appInfo.category, restrict = appInfo.ageRating)
-            ScreenShots(imageList = imageList)
+            ScreenShots(imageList = appInfo.screenshots)
             Spacer(modifier = Modifier.height(8.dp))
             FullDescription(description = appInfo.description)
         }
@@ -129,15 +169,16 @@ fun AppCardPreview() {
         name = "VK",
         category = "Социальные сети",
         description = "VK — это социальная сеть для общения, обмена медиа и доступа к музыке, видео и сообществам.",
-        iconContent = "file:///android_asset/vk_icon.png",
+        icon = "file:///android_asset/vk_icon.png",
         screenshots = listOf(
-            "file:///android_asset/vk_screenshot1.png",
-            "file:///android_asset/vk_screenshot2.png",
-            "file:///android_asset/vk_screenshot3.png"
+            "https://www.rustore.ru/help/assets/images/download-f690244ac26c7242a94e303d8a03796e.webp",
+            "https://www.rustore.ru/help/assets/images/description-fa26cd4dd77d390831208550893078c6.webp",
+            "https://www.rustore.ru/help/assets/images/download-f690244ac26c7242a94e303d8a03796e.webp",
+            "https://www.rustore.ru/help/assets/images/description-fa26cd4dd77d390831208550893078c6.webp"
         ),
         developerCompany = "VK Devs",
         ageRating = "12+"
     )
 
-    AppCard(navController = null, appInfo = vkAppInfo)
+    AppCard(appInfo = vkAppInfo)
 }
