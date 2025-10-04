@@ -1,14 +1,42 @@
-package ru.nsu.rustore_caseclub.model.storage
-
+import android.content.Context
+import androidx.annotation.RawRes
+import kotlinx.serialization.json.Json
+import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.AppInfo
+import java.io.InputStream
 
-class BadRepository: Repository {
-    override fun getList(): List<AppInfo> {
-        return listOf()
+class BadRepository(private val context: Context) {
+
+    private val json = Json {
+        ignoreUnknownKeys = true
+        isLenient = true
     }
 
-    override fun getScreenshots(id: Int): List<String> {
-        TODO("Not yet implemented")
+    fun readAppsFromRaw(): List<AppInfo> {
+        return try {
+            val jsonString = readRawResourceAsString(R.raw.apps)
+            json.decodeFromString<List<AppInfo>>(jsonString)
+        } catch (e: Exception) {
+            emptyList()
+        }
     }
 
+    private inline fun <reified T> readJsonFromRaw(@RawRes resId: Int): T? {
+        return try {
+            val jsonString = readRawResourceAsString(resId)
+            json.decodeFromString<T>(jsonString)
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    private fun readRawResourceAsString(@RawRes resId: Int): String {
+        return context.resources.openRawResource(resId)
+            .bufferedReader()
+            .use { it.readText() }
+    }
+
+    private fun getRawResourceStream(@RawRes resId: Int): InputStream {
+        return context.resources.openRawResource(resId)
+    }
 }
