@@ -110,7 +110,7 @@ fun AppCard(
         ) {
             CardHeader(name = appInfo.name, developer = appInfo.developerCompany)
             Spacer(modifier = Modifier.height(8.dp))
-            MetaData(category = appInfo.developerCompany, restrict = appInfo.ageRating)
+            MetaData(category = appInfo.category, restrict = appInfo.ageRating)
             ScreenShots(imageList)
             Spacer(modifier = Modifier.height(8.dp))
             FullDescription(description = appInfo.description)
@@ -132,7 +132,7 @@ fun AppCardPreview() {
             "file:///android_asset/vk_screenshot2.png",
             "file:///android_asset/vk_screenshot3.png"
         ),
-        developerCompany = "VK Company",
+        developerCompany = "VK Devs",
         ageRating = "12+"
     )
 
