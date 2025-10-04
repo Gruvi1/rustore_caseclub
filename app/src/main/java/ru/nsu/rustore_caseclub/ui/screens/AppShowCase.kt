@@ -126,7 +126,7 @@ fun AppShowCasePreview() {
         name = "ВКонтакте",
         category = "Социальные сети",
         description = "VK — это социальная сеть для общения, обмена медиа и доступа к музыке, видео и сообществам.",
-        iconContent = "file:///android_asset/vk_icon.png",
+        icon = "file:///android_asset/vk_icon.png",
         screenshots = listOf(
             "https://www.rustore.ru/help/assets/images/download-f690244ac26c7242a94e303d8a03796e.webp",
             "https://www.rustore.ru/help/assets/images/description-fa26cd4dd77d390831208550893078c6.webp"
