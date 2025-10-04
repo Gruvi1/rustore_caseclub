@@ -31,18 +31,14 @@ import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.AppInfo
 
 @Composable
-fun CardHeader(name: String, developer: String) {
+fun CardHeader(name: String, developer: String, icon: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(
-            modifier = Modifier
-                .size(50.dp)
-                .background(Color.Blue)
-        )
+        getImage(modifier = Modifier.size(50.dp), url = icon)
         Spacer(modifier = Modifier.width(8.dp))
         Column(
             modifier = Modifier.weight(1f)
@@ -80,13 +76,8 @@ fun ScreenShots(imageList: List<String>) {
                            },
                 elevation = CardDefaults.cardElevation(4.dp)
             ) {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(imageList[index])
-                        .crossfade(true)
-                        .build(),
-                    contentDescription = "",
-                    contentScale = ContentScale.Crop,
+                getImage(
+                    url = imageList[index],
                     modifier = Modifier
                         .size(120.dp)
                         .padding(4.dp)
@@ -153,7 +144,7 @@ fun AppCard(
                 .padding(innerPadding)
                 .padding(horizontal = 16.dp)
         ) {
-            CardHeader(name = appInfo.name, developer = appInfo.developerCompany)
+            CardHeader(name = appInfo.name, developer = appInfo.developerCompany, icon = appInfo.icon)
             Spacer(modifier = Modifier.height(8.dp))
             MetaData(category = appInfo.category, restrict = appInfo.ageRating)
             ScreenShots(imageList = appInfo.screenshots)

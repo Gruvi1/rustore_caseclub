@@ -12,21 +12,12 @@ class BadRepository(private val context: Context) {
         isLenient = true
     }
 
-    fun readAppsFromRaw(): List<AppInfo> {
+     fun readAppsFromRaw(): List<AppInfo> {
         return try {
-            val jsonString = readRawResourceAsString(R.raw.apps)
+            val jsonString = readRawResourceAsString(R.raw.cats)
             json.decodeFromString<List<AppInfo>>(jsonString)
         } catch (e: Exception) {
             emptyList()
-        }
-    }
-
-    private inline fun <reified T> readJsonFromRaw(@RawRes resId: Int): T? {
-        return try {
-            val jsonString = readRawResourceAsString(resId)
-            json.decodeFromString<T>(jsonString)
-        } catch (e: Exception) {
-            null
         }
     }
 
