@@ -34,22 +34,18 @@ fun AppScreen(appInfo: AppInfo) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Иконка и основная информация
         item {
             AppHeader(appInfo = appInfo)
         }
 
-        // Описание
         item {
             AppDescription(description = appInfo.description)
         }
 
-        // Скриншоты
         item {
             ScreenshotsCarousel(screenshots = listOf(appInfo.screenshots))
         }
 
-        // Кнопка "Установить"
         item {
             InstallButton()
         }
