@@ -88,7 +88,8 @@ fun AppScreen(
 private fun AppHeader(appInfo: AppInfo) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier
+            .fillMaxWidth()
     ) {
         AsyncImage(model = ImageRequest.Builder(LocalContext.current)
             .data(appInfo.icon)
