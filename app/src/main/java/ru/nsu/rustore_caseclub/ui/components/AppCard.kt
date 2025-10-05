@@ -18,7 +18,7 @@ import ru.nsu.rustore_caseclub.model.AppInfo
 @Composable
 fun AppCard(
     appInfo: AppInfo,
-    onClick: (AppInfo) -> Unit
+    onClick: (AppInfo) -> Unit,
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,

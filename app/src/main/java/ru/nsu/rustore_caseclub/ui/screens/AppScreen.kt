@@ -1,5 +1,6 @@
 package ru.nsu.rustore_caseclub.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,9 +26,14 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import ru.nsu.rustore_caseclub.model.AppInfo
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 @Composable
-fun AppScreen(appInfo: AppInfo) {
+fun AppScreen(
+    appInfo: AppInfo,
+    onScreenshotClick: (String) -> Unit
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -43,7 +49,10 @@ fun AppScreen(appInfo: AppInfo) {
         }
 
         item {
-            ScreenshotsCarousel(screenshots = appInfo.screenshots)
+            ScreenshotsCarousel(
+                screenshots = appInfo.screenshots,
+                onScreenshotClick = onScreenshotClick
+            )
         }
 
         item {
@@ -101,7 +110,10 @@ private fun AppDescription(description: String) {
 }
 
 @Composable
-private fun ScreenshotsCarousel(screenshots: List<String>) {
+private fun ScreenshotsCarousel(
+    screenshots: List<String>,
+    onScreenshotClick: (String) -> Unit
+) {
     LazyRow {
         items(screenshots) { screenshotUrl ->
             AsyncImage(
@@ -110,6 +122,7 @@ private fun ScreenshotsCarousel(screenshots: List<String>) {
                 modifier = Modifier
                     .size(200.dp, 120.dp)
                     .padding(horizontal = 4.dp)
+                    .clickable( onClick = { onScreenshotClick(URLEncoder.encode(screenshotUrl, StandardCharsets.UTF_8.toString())) })
             )
         }
     }

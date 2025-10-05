@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ru.nsu.rustore_caseclub.model.storage.BadRepository
+import ru.nsu.rustore_caseclub.ui.components.FullScreenImage
 import ru.nsu.rustore_caseclub.ui.screens.AppScreen
 import ru.nsu.rustore_caseclub.ui.screens.AppStoreScreen
 import ru.nsu.rustore_caseclub.ui.screens.OnboardingScreen
@@ -48,8 +49,18 @@ class MainActivity : ComponentActivity() {
                         val appId = backStackEntry.arguments?.getString("appId") ?: return@composable
                         val appInfo = bd.getAppById(appId)
                         appInfo?.let {
-                            AppScreen(appInfo = it)
+                            AppScreen(appInfo = it, onScreenshotClick = { imageUrl -> navController.navigate("full_screen_image/$imageUrl") })
                         }
+                    }
+                    composable(
+                        "full_screen_image/{imageUrl}",
+                        arguments = listOf(navArgument("imageUrl") { type = NavType.StringType })
+                    ) { backStackEntry ->
+                        val imageUrl = backStackEntry.arguments?.getString("imageUrl") ?: ""
+                        FullScreenImage(
+                            imageUrl = imageUrl,
+                            onDismiss = { navController.popBackStack() }
+                        )
                     }
                 }
             }
