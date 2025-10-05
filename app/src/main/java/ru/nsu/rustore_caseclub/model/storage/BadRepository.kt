@@ -1,9 +1,10 @@
+package ru.nsu.rustore_caseclub.model.storage
+
 import android.content.Context
 import androidx.annotation.RawRes
 import kotlinx.serialization.json.Json
 import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.AppInfo
-import java.io.InputStream
 
 class BadRepository(private val context: Context) {
 
@@ -16,19 +17,9 @@ class BadRepository(private val context: Context) {
         return try {
             val jsonString = readRawResourceAsString(R.raw.apps)
             json.decodeFromString<List<AppInfo>>(jsonString)
-        } catch (e: Exception) {
-            println("Err")
-            emptyList()
         }
-    }
-
-    private inline fun <reified T> readJsonFromRaw(@RawRes resId: Int): T? {
-        return try {
-            val jsonString = readRawResourceAsString(resId)
-            json.decodeFromString<T>(jsonString)
-        } catch (e: Exception) {
-            println("Err")
-            null
+        catch (_: Exception) {
+            emptyList()
         }
     }
 
@@ -36,9 +27,5 @@ class BadRepository(private val context: Context) {
         return context.resources.openRawResource(resId)
             .bufferedReader()
             .use { it.readText() }
-    }
-
-    private fun getRawResourceStream(@RawRes resId: Int): InputStream {
-        return context.resources.openRawResource(resId)
     }
 }

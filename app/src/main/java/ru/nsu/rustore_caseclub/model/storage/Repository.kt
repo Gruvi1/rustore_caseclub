@@ -1,6 +1,5 @@
 package ru.nsu.rustore_caseclub.model.storage
 
-import android.content.pm.ApplicationInfo
 import ru.nsu.rustore_caseclub.model.AppInfo
 
 interface Repository {

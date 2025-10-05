@@ -9,7 +9,7 @@ data class AppInfo(
     val category: String,
     val description: String,
     val icon: String,
-    val screenshots: List<String>,
+    val screenshots: String,
     val developerCompany: String,
     val ageRating: String
 )
