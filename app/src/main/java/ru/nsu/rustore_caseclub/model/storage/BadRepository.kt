@@ -1,42 +1,42 @@
+package ru.nsu.rustore_caseclub.model.storage
+
 import android.content.Context
 import androidx.annotation.RawRes
 import kotlinx.serialization.json.Json
 import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.AppInfo
-import java.io.InputStream
 
-class BadRepository(private val context: Context) {
-
+class BadRepository(private val context: Context): Repository {
     private val json = Json {
         ignoreUnknownKeys = true
         isLenient = true
     }
 
-    fun readAppsFromRaw(): List<AppInfo> {
-        return try {
+    private var appsCache: List<AppInfo>? = null
+
+    private fun readAppsFromRaw(): List<AppInfo> {
+        return appsCache ?: try {
             val jsonString = readRawResourceAsString(R.raw.apps)
-            json.decodeFromString<List<AppInfo>>(jsonString)
-        } catch (e: Exception) {
+            val apps = json.decodeFromString<List<AppInfo>>(jsonString)
+            appsCache = apps
+            apps
+        }
+        catch (_: Exception) {
             emptyList()
         }
     }
 
-    private inline fun <reified T> readJsonFromRaw(@RawRes resId: Int): T? {
-        return try {
-            val jsonString = readRawResourceAsString(resId)
-            json.decodeFromString<T>(jsonString)
-        } catch (e: Exception) {
-            null
-        }
+    override fun getList(): List<AppInfo> {
+        return readAppsFromRaw();
+    }
+
+    override fun getAppById(id: String): AppInfo? {
+        return readAppsFromRaw().find { it.id == id }
     }
 
     private fun readRawResourceAsString(@RawRes resId: Int): String {
         return context.resources.openRawResource(resId)
             .bufferedReader()
             .use { it.readText() }
-    }
-
-    private fun getRawResourceStream(@RawRes resId: Int): InputStream {
-        return context.resources.openRawResource(resId)
     }
 }

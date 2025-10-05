@@ -4,5 +4,5 @@ import ru.nsu.rustore_caseclub.model.AppInfo
 
 interface Repository {
     fun getList(): List<AppInfo>
-    fun getScreenshots(id: Int): List<String>
+    fun getAppById(id: String): AppInfo?
 }
