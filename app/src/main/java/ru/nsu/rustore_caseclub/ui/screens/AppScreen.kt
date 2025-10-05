@@ -43,7 +43,7 @@ fun AppScreen(appInfo: AppInfo) {
         }
 
         item {
-            ScreenshotsCarousel(screenshots = listOf(appInfo.screenshots))
+            ScreenshotsCarousel(screenshots = appInfo.screenshots)
         }
 
         item {

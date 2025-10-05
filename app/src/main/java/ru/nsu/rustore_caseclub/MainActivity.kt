@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     }
                     composable("app_store") {
                         AppStoreScreen(
-                            apps = bd.readAppsFromRaw(),
+                            apps = bd.getList(),
                             onAppClick = { appInfo ->
                                 navController.navigate("app_detail/${appInfo.id}")
                             }
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
                         arguments = listOf(navArgument("appId") { type = NavType.StringType })
                     ) { backStackEntry ->
                         val appId = backStackEntry.arguments?.getString("appId") ?: return@composable
-                        val appInfo = bd.readAppsFromRaw().find { it.id == appId }
+                        val appInfo = bd.getAppById(appId)
                         appInfo?.let {
                             AppScreen(appInfo = it)
                         }
