@@ -2,6 +2,7 @@ package ru.nsu.rustore_caseclub.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -21,10 +22,16 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.ui.graphics.Color
 import ru.nsu.rustore_caseclub.model.AppInfo
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -32,14 +39,30 @@ import java.nio.charset.StandardCharsets
 @Composable
 fun AppScreen(
     appInfo: AppInfo,
-    onScreenshotClick: (String) -> Unit
+    onScreenshotClick: (String) -> Unit,
+    onBackClick: () -> Unit
 ) {
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
+        item() {
+            Box(modifier = Modifier.size(50.dp)) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                    contentDescription = "Return back",
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(16.dp)
+                        .fillMaxSize()
+                        .clickable {  onBackClick() }
+                )
+            }
+        }
+
         item {
             AppHeader(appInfo = appInfo)
         }

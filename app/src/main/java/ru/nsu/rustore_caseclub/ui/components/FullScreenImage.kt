@@ -53,7 +53,7 @@ fun FullScreenImage(
                 contentDescription = "Close",
                 tint = Color.White,
                 modifier = Modifier
-                    .size(40.dp)
+                    .size(120.dp)
                     .align(Alignment.TopEnd)
                     .padding(16.dp)
                     .clickable { onDismiss() }

@@ -57,7 +57,11 @@ class MainActivity : ComponentActivity() {
                             val appId = backStackEntry.arguments?.getString("appId") ?: return@composable
                             val appInfo = bd.getAppById(appId)
                             appInfo?.let {
-                                AppScreen(appInfo = it, onScreenshotClick = { imageUrl -> navController.navigate("full_screen_image/$imageUrl") })
+                                AppScreen(
+                                    appInfo = it,
+                                    onScreenshotClick = { imageUrl -> navController.navigate("full_screen_image/$imageUrl") },
+                                    onBackClick = { navController.popBackStack() }
+                                )
                             }
                         }
                         composable(
