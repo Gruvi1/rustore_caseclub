@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 import ru.nsu.rustore_caseclub.R
 import ru.nsu.rustore_caseclub.model.AppInfo
 
-class BadRepository(private val context: Context): Repository {
+class LocalRepository(private val context: Context): Repository {
     private val json = Json {
         ignoreUnknownKeys = true
         isLenient = true

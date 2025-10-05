@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
@@ -32,17 +33,20 @@ fun AppCard(
             .build(),
             contentDescription = "",
             contentScale = ContentScale.Crop,
-            modifier = Modifier.size(200.dp))
+            modifier = Modifier.size(100.dp))
 
         Text(
+            style = MaterialTheme.typography.bodyMedium,
             text = appInfo.name,
             modifier = Modifier.padding(vertical = 4.dp)
         )
         Text(
+            style = MaterialTheme.typography.bodyMedium,
             text = getShortDescription(appInfo.description),
             modifier = Modifier.padding(vertical = 4.dp)
         )
         Text(
+            style = MaterialTheme.typography.bodyMedium,
             text = appInfo.category,
             modifier = Modifier.padding(vertical = 4.dp)
         )

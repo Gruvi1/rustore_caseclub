@@ -49,14 +49,14 @@ fun AppScreen(
         }
 
         item {
+            InstallButton()
+        }
+
+        item {
             ScreenshotsCarousel(
                 screenshots = appInfo.screenshots,
                 onScreenshotClick = onScreenshotClick
             )
-        }
-
-        item {
-            InstallButton()
         }
     }
 }
@@ -78,7 +78,10 @@ private fun AppHeader(appInfo: AppInfo) {
         Spacer(modifier = Modifier.width(16.dp))
 
         Column {
-            Text(text = appInfo.name, modifier = Modifier.padding(vertical = 4.dp))
+            Text(
+                style = MaterialTheme.typography.bodyMedium,
+                text = appInfo.name, modifier = Modifier.padding(vertical = 4.dp)
+            )
 
             Text(
                 text = appInfo.name,
